@@ -1,4 +1,4 @@
-image: grafikart/gitlab-ci:php7
+image: arnobirchler/gitlab-ci:7.2
 
 before_script:
 - composer install
