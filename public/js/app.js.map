@@ -1,0 +1,1 @@
+{"version":3,"sources":["init.js"],"names":[],"mappings":"AAAA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA","file":"app.js","sourcesContent":["(function($){\n  $(function(){\n\n    $('.sidenav').sidenav();\n    $('.parallax').parallax();\n\n  }); // end of document ready\n})(jQuery); // end of jQuery name space\n"]}
