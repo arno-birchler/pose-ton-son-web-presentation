@@ -1,29 +1,33 @@
+# This file is a template, and might need editing before it works on your project.
+# Official framework image. Look for the different tagged releases at:
+# https://hub.docker.com/r/library/php
 image: arnobirchler/gitlab-ci:7.2
 
-stages:
-  - build
-  - services
-  - test
 
-composer:
-  stage: build
+# This folder is cached between builds
+# http://docs.gitlab.com/ce/ci/yaml/README.html#cache
+cache:
+  paths:
+  - vendor/
+
+# This is a basic example for a gem or script which doesn't use
+# services such as redis or postgres
+before_script:
+  # Update packages 
+  - apt-get update -yqq
+
+  # Generate an application key. Re-cache.
+  - cp .env.testing .env
+  - php artisan key:generate
+  - php artisan config:cache
+
+test:
   script:
-    - composer install --dev
-    - php artisan key:generate
-
-artisan :
-  stage: services
-  script:
-    - nohup php artisan serv &
-
-acceptance:
-  stage: test
-  script:
-    - composer acceptance-test
-
-unit:
-  stage: test
-  script:
-    - composer unit-test
-  coverage: '/^\s*Lines:\s*\d+.\d+\%/'
-
+  # run laravel tests
+  #- php vendor/bin/phpunit --coverage-text --colors=never 
+    -composer unit-test
+  # run frontend tests
+  # if you have any task for testing frontend
+  # set it in your package.json script
+  # comment this out if you don't have a frontend test
+  #- npm test
