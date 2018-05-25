@@ -1,10 +1,5 @@
 image: arnobirchler/gitlab-ci:7.2
 
-cache:
-  paths:
-    - vendor/
-    - node_modules/
-
 stages:
   - build
   - services
