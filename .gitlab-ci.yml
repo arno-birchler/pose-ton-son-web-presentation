@@ -18,7 +18,7 @@ composer:
 start server:
   stage: build
   script:
-    -
+    - composer artisan serv
 acceptance:
   stage: test
   script:
