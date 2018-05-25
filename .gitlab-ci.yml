@@ -9,18 +9,18 @@ composer:
   stage: build
   script:
     - composer install --dev
-    - cp .env.example .env
-    - php artisan key:generate
-
+    
 artisan :
   stage: services
   script:
+    - cp .env.example .env
+    - php artisan key:generate
     - nohup php artisan serv &
 
 acceptance:
   stage: test
   script:
-    - composer acceptance-test
+    - php ./vendor/bin/codecept run acceptance
 
 unit:
   stage: test
