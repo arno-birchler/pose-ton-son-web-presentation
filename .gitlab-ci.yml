@@ -14,7 +14,7 @@ cache:
 # services such as redis or postgres
 before_script:
   - composer install
-  - composer dump autoload
+  - composer dump-autoload
   # Generate an application key. Re-cache.
   - cp .env.testing .env
   - php artisan key:generate
