@@ -19,15 +19,14 @@ stages:
 composer:
   stage: build
   script:
+    - chmod 777 -R ./storage/*
     - composer install
     - composer dump-autoload
   # Generate an application key. Re-cache.
     - cp .env.testing .env
     - php artisan key:generate
     - php artisan config:cache
-    - chmod 777 -R ./storage/*
     
-
 unit:
   stage: test
   script:
@@ -35,10 +34,11 @@ unit:
 
 acceptance:
   stage: test
+  before_script:
+    - nohup php artisan serv &
   script:
   # run laravel tests
   #- php vendor/bin/phpunit --coverage-text --colors=never 
-  - nohup php artisan serv &
   - composer acceptance-test
   # run frontend tests
   # if you have any task for testing frontend
