@@ -7,6 +7,7 @@ cache:
 
 stages:
   - build
+  - services
   - test
 
 
@@ -14,6 +15,11 @@ composer:
   stage: build
   script:
     - composer install --dev
+
+artisan :
+  stage: services
+  script:
+    - nohup php artisan serv
 
 acceptance:
   stage: test
