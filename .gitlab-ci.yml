@@ -9,6 +9,7 @@ composer:
   stage: build
   script:
     - composer install --dev
+    - cp .env.example .env
     - php artisan key:generate
 
 artisan :
