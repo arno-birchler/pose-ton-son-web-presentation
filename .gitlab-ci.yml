@@ -38,6 +38,7 @@ acceptance:
   # run laravel tests
   #- php vendor/bin/phpunit --coverage-text --colors=never 
   - nohup php artisan serv &
+  - curl -sS http://localhost:8000
   - composer acceptance-test
   # run frontend tests
   # if you have any task for testing frontend
