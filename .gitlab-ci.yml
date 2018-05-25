@@ -4,7 +4,6 @@
 image: arnobirchler/gitlab-ci:7.2
 
 stages:
-  - build
   - test
 # This folder is cached between builds
 # http://docs.gitlab.com/ce/ci/yaml/README.html#cache
@@ -16,9 +15,9 @@ cache:
 # services such as redis or postgres
 
 
-unit & acceptance:
+unit-acceptance:
   stage: test
-    before_script:
+  before_script:
       - composer install
       - composer dump-autoload
       # Generate an application key. Re-cache.
@@ -26,7 +25,7 @@ unit & acceptance:
       - php artisan key:generate
       - php artisan config:cache
       - nohup php artisan serv &
-    script:
+  script:
       # run laravel tests
       #- php vendor/bin/phpunit --coverage-text --colors=never 
       - composer unit-test
