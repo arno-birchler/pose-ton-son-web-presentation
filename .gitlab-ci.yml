@@ -4,6 +4,7 @@
 image: arnobirchler/gitlab-ci:7.2
 
 stages:
+  - build
   - test
 # This folder is cached between builds
 # http://docs.gitlab.com/ce/ci/yaml/README.html#cache
@@ -15,7 +16,8 @@ cache:
 # services such as redis or postgres
 
 
-test:
+unit & acceptance:
+  stage: test
     before_script:
       - composer install
       - composer dump-autoload
