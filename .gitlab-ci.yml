@@ -17,6 +17,7 @@ before_script:
   - apt-get update -yqq
 
   # Generate an application key. Re-cache.
+  - cp .env.testing .env
   - php artisan key:generate
   - php artisan config:cache
 
