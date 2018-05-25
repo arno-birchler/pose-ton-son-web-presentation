@@ -2,19 +2,14 @@ image: arnobirchler/gitlab-ci:7.2
 
 stages:
   - build
-  - services
   - test
 
 composer:
   stage: build
   script:
     - composer install --dev
-    - composer post-root-package-install
-    - composer post-create-project-cmd
-    
-artisan :
-  stage: services
-  script:
+    - cp .env.example .env
+    - php artisan key:generate
     - nohup php artisan serv &
 
 acceptance:
