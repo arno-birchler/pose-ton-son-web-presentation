@@ -20,11 +20,6 @@ acceptance:
   script:
     - composer acceptance-test
 
-functional:
-  stage: test
-  script:
-    - composer functional-test
-
 unit:
   stage: test
   script:

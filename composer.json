@@ -39,9 +39,9 @@
         }
     },
     "scripts": {
-        "unit-test": "php vendor/bin/codecept run unit --coverage",
-        "functional-test": "php vendor/bin/codecept run functional",
-        "acceptance-test" : "php vendor/bin/codecept run acceptance",
+        "unit-test": "codecept run unit --coverage",
+        "functional-test": "codecept run functional",
+        "acceptance-test" : "codecept run acceptance",
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
