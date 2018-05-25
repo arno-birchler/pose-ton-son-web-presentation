@@ -19,7 +19,7 @@ composer:
 start-server:
   stage: services
   script:
-    - composer artisan serv
+    - php artisan serv
   dependencies:
     - composer
 
