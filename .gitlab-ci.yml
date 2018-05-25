@@ -7,7 +7,6 @@ cache:
 
 stages:
   - build
-  - services
   - test
 
 
@@ -15,13 +14,6 @@ composer:
   stage: build
   script:
     - composer install --dev
-
-start-server:
-  stage: services
-  script:
-    - php artisan serv
-  dependencies:
-    - composer
 
 acceptance:
   stage: test
