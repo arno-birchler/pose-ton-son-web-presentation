@@ -26,6 +26,7 @@ test:
   # run laravel tests
   #- php vendor/bin/phpunit --coverage-text --colors=never 
   - composer unit-test
+  - composer acceptance-test
   # run frontend tests
   # if you have any task for testing frontend
   # set it in your package.json script
