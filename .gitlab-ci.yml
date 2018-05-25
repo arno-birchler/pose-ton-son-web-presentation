@@ -25,14 +25,19 @@ composer:
     - cp .env.testing .env
     - php artisan key:generate
     - php artisan config:cache
-    - nohup php artisan serv &
+    
 
-tests:
+unit:
+  stage: test
+  script:
+  - composer unit-test
+
+acceptance:
   stage: test
   script:
   # run laravel tests
   #- php vendor/bin/phpunit --coverage-text --colors=never 
-  - composer unit-test
+  - nohup php artisan serv &
   - composer acceptance-test
   # run frontend tests
   # if you have any task for testing frontend
