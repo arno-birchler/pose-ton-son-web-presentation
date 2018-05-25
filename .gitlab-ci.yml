@@ -5,16 +5,16 @@ stages:
   - services
   - test
 
-
 composer:
   stage: build
   script:
     - composer install --dev
+    - php artisan key:generate
 
 artisan :
   stage: services
   script:
-    - nohup php artisan serv
+    - nohup php artisan serv &
 
 acceptance:
   stage: test
