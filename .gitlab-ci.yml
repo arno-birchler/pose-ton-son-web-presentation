@@ -10,24 +10,28 @@ stages:
   - test
 
 
-job 1:
+composer:
   stage: build
   script:
-    - composer install
+    - composer install --dev
 
-job 2:
+start server:
+  stage: build
+  script:
+    -
+acceptance:
   stage: test
   script:
-    - php vendor/bin/codecept run acceptance
+    - composer acceptance-test
 
-job 3:
+functional:
   stage: test
   script:
-    - php vendor/bin/codecept run functional
+    - composer functional-test
 
-job 4:
+unit:
   stage: test
   script:
-    - php vendor/bin/codecept run unit --coverage
+    - composer unit-test
   coverage: '/^\s*Lines:\s*\d+.\d+\%/'
 
