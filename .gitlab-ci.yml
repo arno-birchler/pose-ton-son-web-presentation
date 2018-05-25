@@ -9,36 +9,23 @@ image: arnobirchler/gitlab-ci:7.2
 cache:
   paths:
   - vendor/
-  
-stages:
-  - build
-  - test
 
 # This is a basic example for a gem or script which doesn't use
 # services such as redis or postgres
-composer:
-  stage: build
-  script:
-    - chmod 777 -R ./storage/*
-    - composer install
-    - composer dump-autoload
+before_script:
+  - composer install
+  - composer dump-autoload
   # Generate an application key. Re-cache.
-    - cp .env.testing .env
-    - php artisan key:generate
-    - php artisan config:cache
-    
-unit:
-  stage: test
-  script:
-  - composer unit-test
+  - cp .env.testing .env
+  - php artisan key:generate
+  - php artisan config:cache
+  - nohup php artisan serv &
 
-acceptance:
-  stage: test
-  before_script:
-    - nohup php artisan serv &
+test:
   script:
   # run laravel tests
   #- php vendor/bin/phpunit --coverage-text --colors=never 
+  - composer unit-test
   - composer acceptance-test
   # run frontend tests
   # if you have any task for testing frontend
