@@ -11,7 +11,7 @@
         "laravel/tinker": "^1.0"
     },
     "require-dev": {
-        "crysalead/kahlan": "^2.5",
+        "codeception/codeception": "^2.4",
         "filp/whoops": "^2.0",
         "fzaninotto/faker": "^1.4",
         "mockery/mockery": "^1.0",
@@ -39,7 +39,8 @@
         }
     },
     "scripts": {
-        "test": "kahlan --reporter=verbose --coverage=4 --src=app",
+        "unit-test": "kahlan --spec=spec/unit --reporter=verbose --coverage=4 --src=app",
+        "integration-test": "kahlan --spec=spec/integration --reporter=verbose --coverage=4 --src=app",
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
