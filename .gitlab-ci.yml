@@ -27,7 +27,9 @@ composer:
 
 unit-acceptance:
   stage: test
-  before_script: 
+  before_script:
+    - php artisan key:generate
+    - php artisan config:cache
     - nohup php artisan serv &
   script:
       # run laravel tests
