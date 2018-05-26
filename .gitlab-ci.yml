@@ -35,3 +35,4 @@ unit-test:
   stage: test
   script: 
     - composer unit-test
+  coverage: '/^\s*Lines:\s*\d+.\d+\%/'
