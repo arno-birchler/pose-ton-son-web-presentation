@@ -39,7 +39,7 @@
         }
     },
     "scripts": {
-        "unit-test": "codecept run unit --coverage",
+        "unit-test": "codecept run unit --coverage --no-colors",
         "functional-test": "codecept run functional",
         "acceptance-test" : "codecept run acceptance",
         "post-root-package-install": [
